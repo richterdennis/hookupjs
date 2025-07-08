@@ -1,0 +1,63 @@
+{
+  "name": "hookupjs",
+  "version": "0.0.0",
+  "description": "Parallel bootstrapping for modular Node.js apps with customizable loaders and zero dependencies.",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./app": "./lib/app.js"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "nodemon examples/example3.js --exec \"npm run lint && node\"",
+    "dev:inspect": "nodemon --inspect-brk examples/example3.js",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "pub": "node scripts/publish.js",
+    "pub:patch": "npm version patch",
+    "pub:feature": "npm version minor",
+    "preversion": "npm run lint",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richterdennis/hookupjs.git"
+  },
+  "keywords": [
+    "boot",
+    "bootstrap",
+    "startup",
+    "parallel",
+    "async",
+    "loader",
+    "module",
+    "hook",
+    "hookup",
+    "nodejs",
+    "esm",
+    "import",
+    "startup-sequence",
+    "application-boot",
+    "modular"
+  ],
+  "author": "Dennis Richter <hookupjs@richterdennis.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/richterdennis/hookupjs/issues"
+  },
+  "homepage": "https://github.com/richterdennis/hookupjs#readme",
+  "devDependencies": {
+    "@eslint/js": "9.30.1",
+    "@stylistic/eslint-plugin": "5.1.0",
+    "eslint": "9.30.1",
+    "globals": "^16.3.0",
+    "hookupjs": "file:.",
+    "nodemon": "^3.1.10",
+    "prompts": "^2.4.2"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

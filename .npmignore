@@ -1,0 +1,7 @@
+.vscode
+examples/
+scripts/
+.editorconfig
+.gitignore
+eslint.config.js
+jsconfig.json

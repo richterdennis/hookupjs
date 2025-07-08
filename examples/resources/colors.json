@@ -1,0 +1,44 @@
+[
+	{
+		"color": "black",
+		"code": {
+			"rgb": [255, 255, 255],
+			"hex": "#000"
+		}
+	},
+	{
+		"color": "white",
+		"code": {
+			"rgb": [0, 0, 0],
+			"hex": "#FFF"
+		}
+	},
+	{
+		"color": "red",
+		"code": {
+			"rgb": [255, 0, 0],
+			"hex": "#FF0"
+		}
+	},
+	{
+		"color": "blue",
+		"code": {
+			"rgb": [0, 0, 255],
+			"hex": "#00F"
+		}
+	},
+	{
+		"color": "yellow",
+		"code": {
+			"rgb": [255, 255, 0],
+			"hex": "#FF0"
+		}
+	},
+	{
+		"color": "green",
+		"code": {
+			"rgb": [0, 255, 0],
+			"hex": "#0F0"
+		}
+	}
+]

@@ -1,0 +1,36 @@
+{
+	"editor.detectIndentation": true,
+	"editor.useTabStops": true,
+	"editor.insertSpaces": false,
+	"editor.formatOnSave": true,
+	"files.insertFinalNewline": true,
+	"files.trimTrailingWhitespace": true,
+	"files.trimFinalNewlines": true,
+	"eslint.enable": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"javascript.preferences.quoteStyle": "single",
+	"[javascript]": {
+		"editor.formatOnSave": false
+	},
+	"typescript.validate.enable": false,
+	"cSpell.words": [
+		"autengo",
+		"dayjs",
+		"mjml",
+		"nand"
+	],
+	"search.exclude": {
+		"coverage": true,
+		"package-lock.json": true
+	},
+	"mjml.lintEnable": false,
+	"mjml.beautify": {
+		"indent_size": 2,
+		"end_with_newline": true,
+		"preserve_newlines": true,
+		"wrap_attributes": "preserve",
+		"wrap_attributes_indent_size": 2
+	}
+}
