@@ -1,6 +1,6 @@
 {
   "name": "hookupjs",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Parallel bootstrapping for modular Node.js apps with customizable loaders and zero dependencies.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
