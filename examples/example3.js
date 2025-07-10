@@ -20,6 +20,15 @@ boot('./boot', {
 		// Custom hooks registered with module.registerHooks here run first
 	},
 
+	wrapper: async (run) => {
+		// This can be used for an AsyncLocalStorage or something similar where
+		// you need the run logic wrapped
+		const app = await run();
+
+		// The return value of this wrapper function is also the return value of boot
+		return app;
+	},
+
 	initialized: (app) => {
 		console.log('Everything initialized!', app);
 	},

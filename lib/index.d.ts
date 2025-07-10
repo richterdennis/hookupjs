@@ -7,9 +7,11 @@ interface BootOptions<T extends App = App> {
 	registerLoaders?: LoaderOptions;
 	resolve?: ResolveOptions;
 	beforeLoading?: (ctx: T) => void;
+	imported?: (sequences: Sequences<T>) => Sequences<T> | void;
+	wrapper?: (run: Function) => T | void;
 	initialized?: (ctx: T) => void;
 	booted?: (ctx: T) => void;
-	onError?: (ctx: T) => void;
+	onError?: (key: PropertyKey, error: Error) => void;
 }
 
 // LoaderOptions

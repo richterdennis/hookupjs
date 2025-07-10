@@ -105,10 +105,12 @@ export default async function session(app) {
 | `global`         | `boolean`                          | If `true`, the `App` will be attached to the global scope (`global.app`). |
 | `registerLoaders`| [`LoaderOptions`](#loaderoptions)  | Custom loaders that enables different import types. |
 | `resolve`        | [`ResolveOptions`](#resolveoptions)| Options to customize how modules/resources are resolved. |
-| `beforeLoading`  | `(app: App) => void`               | Hook called before loading the sequences. |
-| `initialized`    | `(app: App) => void`               | Hook called after the sequences have initialized. |
-| `booted`         | `(app: App) => void`               | Hook called after the app is fully booted. |
-| `onError`        | `(app: App) => void`               | Hook called if any error occurs during boot. |
+| `beforeLoading`  | `(app) => void`                    | Hook called before loading the sequences. |
+| `imported`       | `(sequences) => sequences \| void` | Hook called after the sequences got imported. Return value overrides the sequences if something other then undefined is returned |
+| `wrapper`        | `(run) => app \| void`             | If you need to wrap the sequences run logic you can use this wrapper hook. The return value of this wrapper function is also the return value of boot |
+| `initialized`    | `(app) => void`                    | Hook called after the sequences have initialized. |
+| `booted`         | `(app) => void`                    | Hook called after the app is fully booted. |
+| `onError`        | `(key, error) => void`             | Hook called if any error occurs during boot. |
 
 #### `LoaderOptions`
 
