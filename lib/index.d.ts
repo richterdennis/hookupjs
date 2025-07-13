@@ -6,6 +6,7 @@ interface BootOptions<T extends App = App> {
 	global?: boolean;
 	registerLoaders?: LoaderOptions;
 	resolve?: ResolveOptions;
+	imports?: { [key: string]: string };
 	beforeLoading?: (ctx: T) => void;
 	imported?: (sequences: Sequences<T>) => Sequences<T> | void;
 	wrapper?: (run: Function) => T | void;
@@ -41,6 +42,8 @@ interface Sequences<T extends App = App> {
 
 // boot function
 declare function boot<T extends App>(sequences: Sequences<T>, options?: BootOptions<T>): Promise<T>
+
+declare function boot<T extends App>(specifier: string, options?: BootOptions<T>): Promise<T>
 
 declare function boot<T extends App>(specifier: string, parentURL?: string, options?: BootOptions<T>): Promise<T>
 

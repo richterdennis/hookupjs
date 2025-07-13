@@ -40,7 +40,6 @@ export default [
 			'no-lonely-if': 'error',
 			'no-unused-expressions': ['error', { allowShortCircuit: true }],
 			'prefer-template': 'error',
-			'sort-imports': ['error', { ignoreDeclarationSort: true, memberSyntaxSortOrder: ['single', 'all', 'multiple', 'none'], allowSeparatedGroups: true }],
 			'sort-keys': ['error', 'asc', { natural: true, allowLineSeparatedGroups: true, minKeys: 6 }],
 		},
 	},

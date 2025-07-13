@@ -27,7 +27,9 @@ npm i hookupjs
 
 ## Usage
 
-```js
+```ts
+function boot(specifier: string, options?: BootOptions): Promise<App>
+
 function boot(specifier: string, parentURL?: string, options?: BootOptions): Promise<App>
 
 function boot(sequences: Sequences, options?: BootOptions): Promise<App>
@@ -37,8 +39,8 @@ function boot(sequences: Sequences, options?: BootOptions): Promise<App>
 
 | Option       | Type           | Description |
 |--------------|----------------|-------------|
-| `specifier`  | `string`       | Path to the boot module that exports the `Sequences`. |
-| `parentURL?` | `string` `URL` | Base path used to import the specifier. Must be a file URL object, file URL string, or absolute path string. Optional due to auto-detection. Startup is faster if this is specified. Example: `import.meta.url`. |
+| `specifier`  | `string`       | Path to the boot module that exports the `Sequences`. The path is resolved relative to `parentURL` if specified or the current file if not. |
+| `parentURL?` | `string`       | Base url used to import the specifier. Must be a file URL string. Optional due to auto-detection. Startup is faster if this is specified. Example: `import.meta.url`. |
 
 ```js
 boot('./boot/sequences.js', import.meta.url);
@@ -105,6 +107,7 @@ export default async function session(app) {
 | `global`         | `boolean`                          | If `true`, the `App` will be attached to the global scope (`global.app`). |
 | `registerLoaders`| [`LoaderOptions`](#loaderoptions)  | Custom loaders that enables different import types. |
 | `resolve`        | [`ResolveOptions`](#resolveoptions)| Options to customize how modules/resources are resolved. |
+| `imports`        | [`imports`](#imports)              | Custom import map to resolve modules/resources. |
 | `beforeLoading`  | `(app) => void`                    | Hook called before loading the sequences. |
 | `imported`       | `(sequences) => sequences \| void` | Hook called after the sequences got imported. Return value overrides the sequences if something other then undefined is returned |
 | `wrapper`        | `(run) => app \| void`             | If you need to wrap the sequences run logic you can use this wrapper hook. The return value of this wrapper function is also the return value of boot |
@@ -174,6 +177,23 @@ const resolve = {
 }
 // ...
 ```
+
+#### `imports`
+
+Define a map that applies to import specifiers.
+
+```js
+imports = {
+	'logger': 'some-logger-package', // Direct replacement
+	'logger': './src/logger', // Relative paths getting resolved relative to `parentURL` if specified or the current file if not
+	'logger': import.meta.resolve('./src/logger'), // Absolute paths needs to be file urls (file://)
+	'~/utils/*': './src/utils/*', // A wildcard (*) can be used to match any number of characters and forward them to the replacement
+	'#/*': './src/*', // If a wildcard (*) is used, both sides needs the wildcard. Only one wildcard is allowed
+	'#/boot': './src/start.js', // '#/boot' will never getting matched. The wildcard in '#/*' above consumes 'boot'. Needs to be defined before any wildcard
+	'@services/*': './src/services/*.service.js', // Resolves '@services/email' to 'file://path/to/src/services/email.service.js'
+}
+```
+
 ## App
 
 The returned promises by the sequence functions are registered under there respective names into the `App`. Use `await` on these promises where you need the actual value. There are two ways to access the `App` everywhere in the project.

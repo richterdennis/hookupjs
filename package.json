@@ -11,8 +11,8 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "nodemon examples/example3.js --exec \"npm run lint && node\"",
-    "dev:inspect": "nodemon --inspect-brk examples/example3.js",
+    "dev": "nodemon examples/example4.js --exec \"npm run lint && node\"",
+    "dev:inspect": "nodemon --inspect-brk examples/example4.js",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "pub": "node scripts/publish.js",
