@@ -15,7 +15,7 @@ boot('#/boot', {
 	},
 
 	imports: {
-		'#/boot': './boot2',
+		'#/boot*': './boot2*',
 		'#/*': './*',
 	},
 
