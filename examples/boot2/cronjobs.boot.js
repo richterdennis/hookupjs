@@ -1,5 +1,5 @@
 import { setTimeout } from 'node:timers/promises';
-import app from 'hookupjs/app';
+import app from 'app';
 
 export default async function({ session }) {
 	await app.db;

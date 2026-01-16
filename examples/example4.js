@@ -15,6 +15,7 @@ boot('#/boot', {
 	},
 
 	imports: {
+		'app': 'hookupjs/app',
 		'#/boot*': './boot2*',
 		'#/*': './*',
 	},
