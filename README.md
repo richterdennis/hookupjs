@@ -148,6 +148,10 @@ const registerLoaders = {
 // ...
 ```
 
+##### **Register a Custom Typescript Loader**
+
+By default Node.js can execute TypeScript files that contains only erasable TypeScript syntax. But if you want to use a third-party package to compile / transpile / transform Typescript you can use the `typescript` key to add custom logic. Check out the example 5 in the examples folder. The example shows how to use SWC to transform Typescript to Javascript while importing it.
+
 #### `ResolveOptions`
 
 ```js
